@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+		<context:annotation-config/>
+		<context:component-scan base-package="spring.biz"/>
+<!-- 
+ 	<bean id="dao" class="spring.biz.user.dao.UserDAO_JDBC"/> 
+ 	<bean id="spring" class="spring.biz.user.dao.UserDAO_Spring"/> 
+ 	<bean id="mybatis" class="spring.biz.user.dao.UserDAO_MyBatis"/> 
+	
+ 	<bean id="userservice" class="spring.biz.user.service.UserServiceImpl" 
+ 					autowire="byName"> ByName=default id="dao"를 찾아 실행 
+ 		 <constructor-arg ref="jdbc" /> 
+ 		 생성자 함수 UserServiceImpl 기본 생성자 참조 
+ 		위의 id 세개 중 jdbc spring mybatis 중에서 골라 설정 
+ 		 <property name="dao" ref="jdbc"></property> 
+ 		 serviceimpl의 setDao 메서드 호출 setter 
+		
+ 	</bean>
+	
+ 	<bean id="user01" class="spring.biz.user.vo.UserVO"/> 
+ 	<bean id="user02" class="spring.biz.user.vo.UserVO"> 
+ 		<constructor-arg index="0" value="java01"/> 
+ 		<constructor-arg index="1" value="홍길동"/> 
+ 		<constructor-arg index="3" value="@.net"/> 
+ 		<constructor-arg index="4" value="02-000-0000"/> 
+ 		<constructor-arg index="5" value="서울시"/>  
+ 		<constructor-arg index="2" value="1234"/> 
+ 	</bean> 
+ 	<bean id="user03" class="spring.biz.user.vo.UserVO" 
+ 				p:email="jeju@j.com" p:phone="043-555-5555" p:username="제주민"> 
+ 				아래 namespace 사용하면 p 사용 가능 
+
+		<property name="address" value="제주도"/> 
+ 		<property name="email" value="jeju@j.com"/> 
+ 		<property name="phone" value="043-555-5555"/> 
+ 		<property name="userid" value="jejumen"/> 
+ 		<property name="username" value="제주민"/> 
+ 		<property name="userpwd" value="4321"/> 
+  	</bean>  
+  	-->
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<bean id="samsung" class="spring.tv.samsungTV" lazy-init="true"/>
+	<bean id="lg" class="spring.tv.lgTV" lazy-init="true" 
+	scope="prototype" init-method="init" destroy-method="destroy"/>
+	<!-- lazy-init true : 요청에 생성자 생성 false(default) : 미리 메모리에 생성자 올림 -->
+	<!-- scope singletone : 메모리에 올라가 있는 한개를 사용, prototype : 사용할때마다 메모리에 계속 올림 -->
+	<bean id="now" class="java.util.Calendar" factory-method="getInstance"/>
+</beans>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<insert id="insert" parameterType="spring.biz.board.vo.BoardVO">
+		insert into board
+		(seq, title, writer, content) values((select nvl(max(seq),0)+1 from board), #{title}, #{writer}, #{content})
+	</insert>
+	
+	<update id="update" parameterType="spring.biz.board.vo.BoardVO">
+		update board set title=#{title}, writer=#{writer}, content=#{content} where seq =#{seq}
+	</update>
+	
+	<delete id="delete" parameterType="spring.biz.board.vo.BoardVO">
+		delete from board where seq = #{seq}
+	</delete>
+	
+	<select id="list" resultType="spring.biz.board.vo.BoardVO">
+		select * from board
+	</select>
+	
+	<select id="seq" parameterType="spring.biz.board.vo.BoardVO" resultType="spring.biz.board.vo.BoardVO">
+		select * from userinfo where seq = #{seq}
+	</select>
+	
+	<select id="search" resultType="spring.biz.board.vo.BoardVO" parameterType="hashMap">
+		select * from board 
+		<where>
+			<if test="title != null"> 
+				title like '%'||#{title}||'%' 
+			</if>
+			<if test="writer != null"> 
+				writer like '%'||#{writer}||'%' 
+			</if>
+			<if test="content != null">
+				content like '%'||#{content}||'%' 
+			</if>
+		</where>
+		
+	</select>
+</mapper>
