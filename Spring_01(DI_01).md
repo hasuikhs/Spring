@@ -119,5 +119,47 @@
   }
   ```
 
+- 생성자를 이용한 방법
+
+  ```java
+  // 예
+  // 객체 생성자
+  public Student(String name, String age, String gradeNum, String classNum){
+      this.name = name;
+      this.age = age;
+      this.gradeNum = gradeNum;
+      this.classNum = classNum;
+  }
+  
+  // applicationContext.xml
+  // 생성자의 순서대로 property를 넣어준다
+  <bean id="student1" class="com.javalec.ex.Student">
+  	<constructor-arg>
+  		<value>홍길동</value>
+  	</constructor-arg>
+  	<constructor-arg>
+  		<value>10살</value>
+  	</constructor-arg>
+  	<constructor-arg>
+  		<value>3학년</value>
+  	</constructor-arg>
+  	<constructor-arg>
+  		<value>20번</value>
+  	</constructor-arg>
+  </bean>
+  <bean id="student2" class="com.javalec.ex.Student">
+  	<constructor-arg value="홍길동" />
+      <constructor-arg value="9살" />
+      <constructor-arg value="2학년" />
+      <constructor-arg value="10번" />
+  </bean>
+  
+  // Main Class
+  	String configLoc = "classpath:applicationContext.xml";
+  	AbstractApplicationContext ctx = 
+              					new GenericXmlApplicationContext(configLoc);
+  	Student student1 = ctx.getBean("Student1", Student.class);
+  ```
+
   
 
