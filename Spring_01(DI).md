@@ -1,4 +1,4 @@
-## Spring_01(DI_01)
+## Spring_01(DI)
 
 - Calcul.java
 
@@ -159,7 +159,8 @@
   	AbstractApplicationContext ctx = 
               					new GenericXmlApplicationContext(configLoc);
   	Student student1 = ctx.getBean("Student1", Student.class);
-  ```
-
+  	Student student2 = ctx.getBean("Student2", Student.class);
+```
+  
   
 
