@@ -1,5 +1,7 @@
 ## Spring_01(DI)
 
+### 1. DI_Ex(01)
+
 - Calcul.java
 
   ```java
@@ -161,3 +163,119 @@
   	Student student1 = ctx.getBean("Student1", Student.class);
   	Student student2 = ctx.getBean("Student2", Student.class);
   ```
+
+### 2. DI_Ex(02)
+
+```java
+/* BMICalculator.java */
+public class BMICalculator {
+	private double lowWeight;
+	private double normal;
+	private double overWeight;
+	private double obesity;
+	
+	public void bmiCalculation(double weight, double height) {
+		double h = height * 0.01;
+		double result = weight / (h * h);
+		
+		System.out.println("BMI 지수 :" + (int)result);
+		
+		if (result > obesity){
+			System.out.println("비만 입니다.");
+		} else if (result > overWeight) {
+			System.out.println("과체중 입니다.");
+		} else if (result > normal) {
+			System.out.println("정상 입니다.");
+		} else {
+			System.out.println("저체중 입니다.");
+		}
+        
+        // ... getter & setter
+	}
+```
+
+```java
+/* Myinfo.java */
+public class Myinfo {
+	private String name;
+	private double height;
+	private double weight;
+	private ArrayList<String> hobbys;
+	private BMICalculator bmiCalculator;
+    
+    // ... getter & setter
+    
+    public void bmiCalculation() {
+		bmiCalculator.bmiCalculation(weight, height);
+	}
+	
+	public void getinfo() {
+		System.out.println("이름 : " + name);
+		System.out.println("키 : " + height);
+		System.out.println("몸무게 : " + weight);
+		System.out.println("취미 : " + hobbys);
+		bmiCalculation();
+	}
+```
+
+```xml
+<!-- applicationContext.xml -->
+<bean id="bmiCalculator" class="com.javalec.ex.BMICalculator">
+		<property name="lowWeight">
+			<value>18.5</value>
+		</property>
+		<property name="normal">
+			<value>23</value>
+		</property>
+		<property name="overWeight">
+			<value>25</value>
+		</property>
+		<property name="obesity">
+			<value>30</value>
+		</property>
+	</bean>
+
+	<bean id="myinfo" class="com.javalec.ex.Myinfo">
+		<property name="name">
+			<value>홍길동</value>
+		</property>
+		<property name="height">
+			<value>187</value>
+		</property>
+		<property name="weight">
+			<value>84</value>
+		</property>
+		<property name="hobby">
+			<list>
+				<value>수영</value>
+				<value>요리</value>
+				<value>독서</value>
+			</list>
+		</property>
+
+		<property name="bmiCalculator">
+			<ref bean="bmiCalculator" />
+		</property>
+	</bean>
+```
+
+```java
+/* MainClass.java */
+// 스프링 컨테이너의 이해
+public class MainClass {
+	public static void main(String[] args) {
+
+		String configLocation ="classpath:applicationContext.xml";
+        		
+        // 스프링 컨테이너(IOC) 의 생성
+		AbstractApplicationContext ctx = 
+            						new GenericXmlApplicationContext(configLocation);
+		// 스프링 컨테이너에서 컴포넌트 가져옴
+        Myinfo myinfo = ctx.getBean("myinfo", Myinfo.class);
+		myinfo.getinfo();
+		
+		ctx.close();
+	}
+}
+```
+
