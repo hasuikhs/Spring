@@ -1,6 +1,6 @@
 # Spring CRUD 구현
 
-![image-20200114090042054](Spring CRUD 구현.assets/image-20200114090042054.png)
+![image-20200114090042054](Spring_CRUD_구현.assets/image-20200114090042054.png)
 
 
 
@@ -12,7 +12,7 @@
 
 ## 1. 영속 계층 구현
 
-![image-20200114100047096](Spring CRUD 구현.assets/image-20200114100047096.png)
+![image-20200114100047096](Spring_CRUD_구현.assets/image-20200114100047096.png)
 
 - **데이터 처리를 담당**하는 계층
 - 영속 계층의 작업은 항상 다음과 같은 순서로 진행
@@ -24,7 +24,7 @@
 
 - 프로젝트에 **`com.test.domain`** 패키지를 생성하고, BoardVO 클래스를 정의
 
-  ![image-20200113162007218](Spring CRUD 구현.assets/image-20200113162007218.png)
+  ![image-20200113162007218](Spring_CRUD_구현.assets/image-20200113162007218.png)
 
   ```java
   @Data	// getter/setter, toString()을 지원
@@ -78,13 +78,13 @@
 
 - 테스트 결과
 
-  ![image-20200113164523431](Spring CRUD 구현.assets/image-20200113164523431.png)
+  ![image-20200113164523431](Spring_CRUD_구현.assets/image-20200113164523431.png)
 
 #### 1.2.2 Mapper XML
 
 - **`src/main/resources`**에 패키지와 동일한 **`com/test/mapper`** 단계의 폴더를 생성하고 XML 파일을 작성
 
-  ![image-20200113164912387](Spring CRUD 구현.assets/image-20200113164912387.png)
+  ![image-20200113164912387](Spring_CRUD_구현.assets/image-20200113164912387.png)
 
 - BoardMapper.xml
 
@@ -106,7 +106,7 @@
 
 - XML 파일에 SQL문이 처리되었으니 **BoardMapper 인터페이스에 SQL은 제거** 후 테스트 확인
 
-  ![image-20200113165310890](Spring CRUD 구현.assets/image-20200113165310890.png)
+  ![image-20200113165310890](Spring_CRUD_구현.assets/image-20200113165310890.png)
 
 ### 1.3 CRUD 구현 및 테스트
 
@@ -158,7 +158,7 @@
 
 - insert 성공시
 
-  ![image-20200113172118193](Spring CRUD 구현.assets/image-20200113172118193.png)
+  ![image-20200113172118193](Spring_CRUD_구현.assets/image-20200113172118193.png)
 
 #### 1.3.2 Read
 
@@ -189,7 +189,7 @@
 
 - Read 성공시
 
-  ![image-20200113173011216](Spring CRUD 구현.assets/image-20200113173011216.png)
+  ![image-20200113173011216](Spring_CRUD_구현.assets/image-20200113173011216.png)
 
 #### 1.3.3 Update
 
@@ -228,7 +228,7 @@
 
 - update 성공 시
 
-  ![image-20200113174350381](Spring CRUD 구현.assets/image-20200113174350381.png)
+  ![image-20200113174350381](Spring_CRUD_구현.assets/image-20200113174350381.png)
 
 #### 1.3.4 Delete
 
@@ -258,11 +258,11 @@
 
 - delete 성공시
 
-  ![image-20200113173802437](Spring CRUD 구현.assets/image-20200113173802437.png)
+  ![image-20200113173802437](Spring_CRUD_구현.assets/image-20200113173802437.png)
 
 ## 2. 비즈니스 계층 구현
 
-![image-20200114100346742](Spring CRUD 구현.assets/image-20200114100346742.png)
+![image-20200114100346742](Spring_CRUD_구현.assets/image-20200114100346742.png)
 
 - 고객의 요구사항을 반영하는 계층으로 프레젠테이션 계층과 영속 계층의 **중간 다리 역할**
 
@@ -270,7 +270,7 @@
 
 - **`src/main/java`에 `com.test.service` 패키지** 작성 후 BoardService 인터페이스와 BoardServiceImpl 클래스를 선언하자.
 
-  ![image-20200114101302097](Spring CRUD 구현.assets/image-20200114101302097.png)
+  ![image-20200114101302097](Spring_CRUD_구현.assets/image-20200114101302097.png)
 
 - BoardService 인터페이스
 
@@ -308,7 +308,7 @@
 
 - 비즈니스 계층의 인터페이스와 구현 클래스가 작성되었다면, 이를 **스프링의 빈으로 인식**하기 위해서 **root-context.xml에 @Service 어노테이션이 있는 `com.test.service` 패키지를 스캔하도록 추가**해야한다.
 
-  ![image-20200114102426262](Spring CRUD 구현.assets/image-20200114102426262.png)
+  ![image-20200114102426262](Spring_CRUD_구현.assets/image-20200114102426262.png)
 
 - 태그 추가
 
@@ -320,7 +320,7 @@
 
 - **`src/test/java`** 에 **`com.test.service` 패키지**를 생성 후 BoardServiceTests 클래스 작성
 
-  ![image-20200114103452717](Spring CRUD 구현.assets/image-20200114103452717.png)
+  ![image-20200114103452717](Spring_CRUD_구현.assets/image-20200114103452717.png)
   
 - BoardServiceTests 클래스
 
@@ -343,7 +343,7 @@
 
 - 테스트 성공시
 
-  ![image-20200114103733287](Spring CRUD 구현.assets/image-20200114103733287.png)
+  ![image-20200114103733287](Spring_CRUD_구현.assets/image-20200114103733287.png)
 
 #### 2.2.1 Create 구현 및 테스트
 
@@ -374,7 +374,7 @@
 
 - 테스트 성공시
 
-  ![image-20200114104542901](Spring CRUD 구현.assets/image-20200114104542901.png)
+  ![image-20200114104542901](Spring_CRUD_구현.assets/image-20200114104542901.png)
 
 #### 2.2.2 Read
 
@@ -401,7 +401,7 @@
 
 - 테스트 성공시
 
-  ![image-20200114105247670](Spring CRUD 구현.assets/image-20200114105247670.png)
+  ![image-20200114105247670](Spring_CRUD_구현.assets/image-20200114105247670.png)
 
 ##### 2.2.2.2 조회 작업의 구현 및 테스트
 
@@ -426,7 +426,7 @@
 
 - 테스트 성공시
 
-  ![image-20200114105712384](Spring CRUD 구현.assets/image-20200114105712384.png)
+  ![image-20200114105712384](Spring_CRUD_구현.assets/image-20200114105712384.png)
 
 #### 2.2.3 Update & Delete
 
@@ -471,11 +471,11 @@
 
 - 테스트 성공시
 
-  ![image-20200114110540748](Spring CRUD 구현.assets/image-20200114110540748.png)
+  ![image-20200114110540748](Spring_CRUD_구현.assets/image-20200114110540748.png)
 
 ## 3. 프레젠테이션 계층 구현
 
-![image-20200114110722443](Spring CRUD 구현.assets/image-20200114110722443.png)
+![image-20200114110722443](Spring_CRUD_구현.assets/image-20200114110722443.png)
 
 - 프레젠테이션 계층은 말 그대로 사용자 인터페이스이다.
 
@@ -496,7 +496,7 @@
 
 -  **`webapp/WEB-INF/spring/sppServlet/`**에서 **servlet-context.xml** 확인
 
-  ![image-20200114112049017](Spring CRUD 구현.assets/image-20200114112049017.png)
+  ![image-20200114112049017](Spring_CRUD_구현.assets/image-20200114112049017.png)
 
 - `<context:component-scan ...`패키지를 확인 잘못 되었다면 컨트롤러가 있는 패키지로 변경
 
@@ -582,7 +582,7 @@
 
 - 테스트 성공시
 
-  ![image-20200114124059602](Spring CRUD 구현.assets/image-20200114124059602.png)
+  ![image-20200114124059602](Spring_CRUD_구현.assets/image-20200114124059602.png)
 
 #### 3.2.1 Create 등록 처리 및 테스트
 
@@ -615,7 +615,7 @@
 
 - 테스트 성공시
 
-  ![image-20200114131256777](Spring CRUD 구현.assets/image-20200114131256777.png)
+  ![image-20200114131256777](Spring_CRUD_구현.assets/image-20200114131256777.png)
 
 #### 3.2.2 Read
 
@@ -641,7 +641,7 @@
 
 - 테스트 성공시
 
-  ![image-20200114132045131](Spring CRUD 구현.assets/image-20200114132045131.png)
+  ![image-20200114132045131](Spring_CRUD_구현.assets/image-20200114132045131.png)
 
 #### 3.2.3 Update
 
@@ -675,7 +675,7 @@
 
 - 테스트 성공시
 
-  ![image-20200114133004341](Spring CRUD 구현.assets/image-20200114133004341.png)
+  ![image-20200114133004341](Spring_CRUD_구현.assets/image-20200114133004341.png)
 
 #### 3.2.4Delete
 
@@ -707,5 +707,5 @@
 
 - 테스트 성공시
 
-  ![image-20200114133812177](Spring CRUD 구현.assets/image-20200114133812177.png)
+  ![image-20200114133812177](Spring_CRUD_구현.assets/image-20200114133812177.png)
 
