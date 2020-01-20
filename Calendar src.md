@@ -1,20 +1,10 @@
 # Calendar src
 
+## 1차시
+
 - calendarServiceImpl
 
   ```java
-  package com.test.service;
-  
-  import java.text.DateFormat;
-  import java.text.SimpleDateFormat;
-  import java.util.ArrayList;
-  import java.util.Date;
-  import java.util.HashMap;
-  import java.util.List;
-  import java.util.Map;
-  
-  import org.springframework.stereotype.Service;
-  
   @Service
   public class CalendarServiceImpl implements CalendarService {
   	
@@ -89,7 +79,7 @@
   }
   
   ```
-
+  
 - calendarController
 
   ```java
@@ -178,6 +168,57 @@
   	</center>
   </body>
   </html>
+  ```
+
+
+## 2차시
+
+- CalendarServiceImpl
+
+  ```java
+  @Service
+  public class CalendarServiceImpl implements CalendarService {
+  
+  	@SuppressWarnings({ "deprecation", "null" })
+  	@Override
+  	public Map<String, Object> calendar() {
+  
+  		...
+  		
+          // List 안에 List 생성
+  		List<List<String>> weeks = new ArrayList<List<String>>();
+  		
+  
+  		List<String> sub = null;
+  		String td = "";
+          // 삼항연산자
+  		int weekCnt = (arrCal.get(35) == " ") ? normalLength / WEEK_DAY : maxLength / WEEK_DAY;
+  		
+          // List 안에 List를 선언하면 아래와 같이 list에 sub한 list를 넣을 수 있다.
+  		for(int i = 0; i < weekCnt; i++) {
+  			weeks.add(arrCal.subList(i * WEEK_DAY, (i + 1) * WEEK_DAY));
+  		}
+  		
+  		System.out.println(weeks);
+  		
+  		String html= "";
+  		for(List<String> week : weeks) {
+  			html += "<tr>" + "\n";
+  			Iterator<String> it = week.iterator();
+  			while (it.hasNext()) {
+  				String tgtDate = it.next();
+  				html += "<td>" + tgtDate + "</td>" + "\n";
+  			}
+  			html += "</tr>" + "\n";
+  		}
+  		System.out.println(html);
+  		
+  		result.put("td", html);
+  
+  		return result;
+  	}
+  
+  }
   ```
 
   

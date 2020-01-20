@@ -129,7 +129,7 @@
 
 - MyBatis, MyBatis-Spring, HikariCP, log4jdbc
 
-  - HikariCP : 
+  - HikariCP : 미리 커넥션 객체를 생성하고 해당 케넥션 객체를 관리해준다.
 
   ```xml
   ...
