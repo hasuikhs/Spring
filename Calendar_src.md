@@ -506,7 +506,7 @@
 
 - 결과 화면
 
-  ![image-20200121125014317](Calendar src.assets/image-20200121125014317.png)
+  ![image-20200121125014317](Calendar_src.assets/image-20200121125014317.png)
 
 ## 4차시
 
@@ -792,5 +792,5 @@
 
 - 화면
 
-  ![image-20200121150136712](Calendar src.assets/image-20200121150136712.png)
+  ![image-20200121150136712](Calendar_src.assets/image-20200121150136712.png)
 
