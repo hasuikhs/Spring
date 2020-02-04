@@ -1119,6 +1119,112 @@
   </html>
   ```
 
-  
 
+
+## 6차시
+
+- usercontroller
+
+  ```java
+  @Controller
+  @RequestMapping("/user/*")
+  @AllArgsConstructor
+  public class UserController {
+  	
+  	@Autowired
+  	private UserService service;
+  	
+  	@GetMapping("/login")
+  	public String logPage() {
+  		return "user/login";
+  	}
+  	
+  	@RequestMapping(value="/login", method=RequestMethod.POST)
+  	public ModelAndView login(@ModelAttribute UserVO user, HttpSession session) {
+  		long result = service.login(user).getUserno();
+  		ModelAndView mav = new ModelAndView();
+  		
+  		Calendar c = Calendar.getInstance();
+  		
+  		int year = c.get(Calendar.YEAR);
+  		int month = c.get(Calendar.MONTH) + 1;
+  		if (result >= 1) {
+  			mav.setViewName("redirect:../calendar/get?year=" + year + "&month=" + month + "&ms=0");
+  			mav.addObject("userno", result);
+  			
+  		} else {
+  			mav.setViewName("../user/login");
+  			mav.addObject("msg", "fail");
+  		}
+  		return mav;
+  	
+  	}
+  }
+  ```
+
+- uservo
+
+  ```java
+  @Data
+  public class UserVO {
+  	private long userno;
+  	private String userid;
+  	private String password;
+  }
+  ```
+
+- usermapper
+
+  ```java
+  public interface UserMapper {
+  	public UserVO login(UserVO user);
+  }
+  ```
+
+- userservice
+
+  ```java
+  public interface UserService {
+  	public UserVO login(UserVO user);
+  }
+  ```
+
+- userserviceimpl
+
+  ```java
+  @Service
+  @AllArgsConstructor
+  public class UserServiceImpl implements UserService{
   
+  	private UserMapper mapper;
+  	
+  	@Override
+  	public UserVO login(UserVO user) {
+  		return mapper.login(user);
+  	}
+  
+  }
+  ```
+
+- login.jsp
+
+  ```html
+  <%@ page language="java" contentType="text/html; charset=EUC-KR"
+      pageEncoding="EUC-KR"%>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+  <html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+  <title>로그인 페이지</title>
+  </head>
+  <body>
+  	<form action="/user/login" method="POST">
+  		<div>아이디 : <input type="text" name="userid"></div>
+  		<div>비밀번호 : <input type="password" name="password"></div>
+  		<div><input type="submit"></div>
+  	</form>
+  </body>
+  </html>
+  ```
+
+  - 로그인에 성공하면 userno가 파라매터로 url로 전달 된다.
