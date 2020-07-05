@@ -65,3 +65,46 @@
 - Spring Initializr Java Support
 - Spring boot Extension Pack
 
+## 2. 프로젝트 생성
+
+- `f1`을 눌러 spring initializr 검색 - maven or gradle 선택
+
+- pom.xml에서 dependency 추가
+
+  ```xml
+  <dependency>
+  	<groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-jasper</artifactId>
+  </dependency>
+  ```
+
+- application.properties 내 다음 코드 추가
+
+  ```
+  spring.mvc.view.prefix=/WEB-INF/jsp/
+  spring.mvc.view.suffix=.jsp
+  ```
+
+- view(jsp) 추가
+
+  - `\src\main` 내에 `\WEB-INF\jsp`를 추가
+
+- HelloController.java 생서 후 아래 코드 입력
+
+  ```java
+  import org.springframework.stereotype.Controller; 
+  import org.springframework.web.bind.annotation.RequestMapping; 
+  import org.springframework.web.bind.annotation.RequestMethod; 
+  import org.springframework.web.bind.annotation.ResponseBody; 
+  import org.springframework.web.servlet.ModelAndView; 
+  @Controller 
+  public class HelloController {
+      @RequestMapping("/") 
+      @ResponseBody 
+      public String index() { 
+          return "Hello, Spring"; 
+      } 
+  }
+  ```
+
+  
