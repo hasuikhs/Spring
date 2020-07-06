@@ -1,0 +1,6 @@
+INDEX VERSION 1.4+C:\Users\STU\Documents\Git\Spring\spring_mysql\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1351520904.index
+1676563183.index
+911470488.index
+3373756705.index
+3639276354.index
