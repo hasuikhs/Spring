@@ -1,3 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\STU\Documents\Git\Spring\spring_mysql\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2120516885.index
-\spring-mysql\src\main\java
