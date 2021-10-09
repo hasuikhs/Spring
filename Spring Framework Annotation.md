@@ -50,7 +50,7 @@ public class TestBean (
   private Test test;
   ```
 
-## @Qualifier
+## @Qualifier(bean_id)
 
 - @Autowired와 함께 사용
 - @Autowired 동일 타입의 빈객체가 존재시 특정 빈을 삽입할 수 있게 설정
@@ -76,9 +76,10 @@ public class User(){}
 
 - 컨테이너에서 객체를 제거하기 전에 해야할 작업을 수행하기 위해 사용
 
-## @Service
+## @Service(bean_id)
 
 - 비즈니스 로직이 들어가는 Service 빈 등록
+- bean_id 등록 가능
 
 ## @Repository
 
