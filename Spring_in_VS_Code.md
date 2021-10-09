@@ -73,6 +73,8 @@
 
 - `f1`을 눌러 spring initializr 검색 - maven or gradle 선택
 
+  - 기본적으로 `Spring Boot DevTools`와 `Spring Web` 선택해야 웹 어플리케이션 프로젝트 시작 가능
+
 - pom.xml에서 dependency 추가
 
   ```xml
@@ -84,7 +86,11 @@
 
 - application.properties 내 다음 코드 추가
 
+  - `server.servlet.context-path`로 프로젝트의 기본 루트 설정
+
   ```
+  server.servlet.context-path=/<prj-name>
+  
   spring.mvc.view.prefix=/WEB-INF/jsp/
   spring.mvc.view.suffix=.jsp
   ```
@@ -93,7 +99,7 @@
 
   - `\src\main` 내에 `\WEB-INF\jsp`를 추가
 
-- HelloController.java 생서 후 아래 코드 입력
+- HelloController.java 생성 후 아래 코드 입력
 
   ```java
   import org.springframework.stereotype.Controller; 
