@@ -331,3 +331,8 @@ $ mvn install
 
 - 만약 개인 설정 파일이 따로 있다면 `.vscode`의 `launch.json`을 찾아 `vmArgs: []` 를 추가 후 배열안에 넣어주면 됨
 
+## 프로젝트 clone시 주의점
+
+- Spring은 `application.yml` 파일을 기준으로 설정을 잡고있음
+- 협업시 이 설정을 본인의 개발환경에 맞게 적절히 변환해 주어야함
+- 본인의 경우 Eclipse로 개발을 하다가 VS Code로 바꾸면서 이 설정을 잊어먹어 하루종일 헤메었음...(`basedir` )
