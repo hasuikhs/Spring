@@ -333,6 +333,26 @@ $ mvn install
 
   - 그냥 한번이라도 프로젝트 런하면 `.launch.json` 파일은 생성되므로, 한번 실행시킨후 파일을 찾아도 됨
 
+  ```json
+  // 예시
+  {
+      "configurations": [
+          {
+              "type": "java",
+              "name": "<project-name>",
+              "request": "launch",
+              "cwd": "${workspaceFolder}",
+              "console": "internalConsole",
+              "mainClass": "<main-class>",
+              "progjectName": "<project-name>",
+              "vmArgs": [
+                  "config-file-location=config-file-name"
+              ]
+          }
+      ]
+  }
+  ```
+
 - 추가로 JUnit 테스트시에도 개인 설정 파일을 사용한다면 `.vscode`의 `settings.json`을 찾아 아래와 같이 추가
 
   ```json
@@ -345,7 +365,6 @@ $ mvn install
   }
   ```
 
-  
 
 ## 프로젝트 clone시 주의점
 
