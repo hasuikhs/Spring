@@ -90,11 +90,23 @@
 
   ![image-20200111222556716](README.assets/image-20200111222556716.png)
 
-### 1.3.3 서버 확인
+#### 1.3.3 WebappStructureSerializer 문제
+
+- pom.xml `plugins`에 `maven-war-plugin` 추가
+
+  ```xml
+  <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.3.1</version>
+  </plugin>
+  ```
+
+### 1.4 서버 확인
 
 ![image-20200113135759249](README.assets/image-20200113135759249.png)
 
-### 1.3.4 pom.xml 추가 설정
+### 1.5 pom.xml 추가 설정
 
 - 각각의 Dependency 버전은 [Maven Repository](https://mvnrepository.com/)에서 확인
 
@@ -299,22 +311,18 @@
   ```java
   @Log4j
   public class JDBCTests {
-  	static {
-  		try {
-  			// 8버전 이후부터 com.mysql.cj.jdbc.Driver
-  			Class.forName("com.mysql.cj.jdbc.Driver");
-  		} catch (Exception e) {
-  			e.printStackTrace();
-  		}
-  	}
-                           
+  	
+  	private static final String DRIVER = "com.mysql.cj.jdbc.Driver"; 
+  	// 5.1.X 이후 버전부터 KST 타임존을 인식하지 못함
+  	private static final String URL = "jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&serverTimezone=UTC";
+  	private static final String USER = "book_ex";
+  	private static final String PASSWORD = "book_ex";
+  	
   	@Test
   	public void testConnection() {
-  		try(Connection con = DriverManager.getConnection(
-  				// 5.1.X 이후 버전부터 KST 타임존을 인식하지 못함
-  				"jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&serverTimezone=UTC",
-  				"book_ex",
-  				"book_ex")){
+  		try {
+  			Class.forName(DRIVER);
+  			Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
   			
   			log.info(con);
   		} catch (Exception e) {
@@ -323,7 +331,7 @@
   	}
   }
   ```
-
+  
 - JUnit을 통한 DB연결 확인
 
   ![image-20200113154016572](README.assets/image-20200113154016572.png)
