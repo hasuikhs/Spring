@@ -83,7 +83,7 @@
 - 수정 후
 
   ```xml
-  <!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+  <!DOCTYPE log4j:configuration SYSTEM "https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
   ```
 
 - 이렇게 진행하면 우선 기본 Spring MVC 오류들을 해결 가능하다.

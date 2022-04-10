@@ -331,6 +331,41 @@ $ mvn install
 
 - 만약 개인 설정 파일이 따로 있다면 `.vscode`의 `launch.json`을 찾아 `vmArgs: []` 를 추가 후 배열안에 넣어주면 됨
 
+  - 그냥 한번이라도 프로젝트 런하면 `.launch.json` 파일은 생성되므로, 한번 실행시킨후 파일을 찾아도 됨
+
+  ```json
+  // 예시
+  {
+      "configurations": [
+          {
+              "type": "java",
+              "name": "<project-name>",
+              "request": "launch",
+              "cwd": "${workspaceFolder}",
+              "console": "internalConsole",
+              "mainClass": "<main-class>",
+              "progjectName": "<project-name>",
+              "vmArgs": [
+                  "config-file-location=config-file-name"
+              ]
+          }
+      ]
+  }
+  ```
+
+- 추가로 JUnit 테스트시에도 개인 설정 파일을 사용한다면 `.vscode`의 `settings.json`을 찾아 아래와 같이 추가
+
+  ```json
+  {
+      "java.test.config": {
+          "vmArgs": [
+              "-Dspring.config.name=<설정 파일명>" // name
+          ]
+      }
+  }
+  ```
+
+
 ## 프로젝트 clone시 주의점
 
 - Spring은 `application.yml` 파일을 기준으로 설정을 잡고있음
