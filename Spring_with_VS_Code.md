@@ -358,10 +358,13 @@ $ mvn install
   ```json
   {
       "java.test.config": {
+          "name": "testConfiguration",
+          "workingDirectory": "${workspaceFolder}"
           "vmArgs": [
               "-Dspring.config.name=<설정 파일명>" // name
           ]
-      }
+      },
+  	"java.configuration.updateBuildConfiguration": "automatic"
   }
   ```
 
