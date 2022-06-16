@@ -329,7 +329,7 @@ $ mvn install
 
 - 위의 설정처럼 `localhost:8081/demo/` 에 들어가 HELLO, SPRING BOOT가 뜨는지 확인
 
-- 만약 개인 설정 파일이 따로 있다면 `.vscode`의 `launch.json`을 찾아 `vmArgs: []` 를 추가 후 배열안에 넣어주면 됨
+- 만약 개인 설정 파일이 따로 있다면 `.vscode`의 **`launch.json`**을 찾아 `vmArgs: []` 를 추가 후 배열안에 넣어주면 됨
 
   - 그냥 한번이라도 프로젝트 런하면 `.launch.json` 파일은 생성되므로, 한번 실행시킨후 파일을 찾아도 됨
 
@@ -353,7 +353,7 @@ $ mvn install
   }
   ```
 
-- 추가로 JUnit 테스트시에도 개인 설정 파일을 사용한다면 `.vscode`의 `settings.json`을 찾아 아래와 같이 추가
+- 추가로 JUnit 테스트시에도 개인 설정 파일을 사용한다면 `.vscode`의 **`settings.json`**을 찾아 아래와 같이 추가
 
   ```json
   {
